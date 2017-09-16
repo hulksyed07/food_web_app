@@ -1,0 +1,17 @@
+{
+  "name": "food_web_app",
+  "description": "Angular web app for food_api",
+  "main": "index.js",
+  "authors": [
+    "hulksyed07"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/hulksyed07/food_web_app",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
