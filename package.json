@@ -1,0 +1,19 @@
+{
+  "name": "food_web_app",
+  "version": "1.0.0",
+  "description": "Angular web app for food_api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hulksyed07/food_web_app.git"
+  },
+  "author": "hulksyed07",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hulksyed07/food_web_app/issues"
+  },
+  "homepage": "https://github.com/hulksyed07/food_web_app#readme"
+}
