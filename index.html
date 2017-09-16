@@ -2,11 +2,18 @@
 <html>
 <head>
 	<title>Welcome to India Eats</title>
+	<link rel="stylesheet" href= "/app/app.css">
 	<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
 	<script type="text/javascript" src="/app/app.js"></script>
+	<script type="text/javascript" src="/app/services/CategoryService.js"></script>
+	<script type="text/javascript" src="/app/services/UtilsService.js"></script>
+	<script type="text/javascript" src="/app/controllers/CategoriesController.js"></script>
+	<script type="text/javascript" src="/app/directives/category.js"></script>
 </head>
 <body ng-app="IndiaEats">
-
+	<a href="#/">Home</a>
+	<a href="#/categories">Categories</a>
+	<div ng-view=""></div>
 </body>
 </html>
