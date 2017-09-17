@@ -1,7 +1,9 @@
-angular.module('IndiaEats').controller('CategoriesController', function(CategoryService){
+angular.module('IndiaEats').controller('CategoriesController', function(CategoryService, FoodService){
 	catCtrl = this;
 
-	catCtrl.categories = {}
+	catCtrl.categories = null;
+	catCtrl.foods = null;
+
 
 	catCtrl.setAllCategories = function(){
 	    CategoryService.getAllCategories()
@@ -13,4 +15,13 @@ angular.module('IndiaEats').controller('CategoriesController', function(Category
 	};
 
 	catCtrl.setAllCategories();
+
+	catCtrl.setCurrentCategory = function(category) {
+		catCtrl.currentCategory = category;
+		FoodService.getFoodsForCategory(category)
+			.then(function(result){
+				console.log(result);
+				catCtrl.foods = result ;
+			});
+	}
 })

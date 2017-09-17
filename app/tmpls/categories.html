@@ -1,5 +1,10 @@
 <div>
 	<h3>Listing Categories</h3>
 
-	<category ng-repeat="category in catCtrl.categories" />
+	<category ng-repeat="category in catCtrl.categories" ng-click="catCtrl.setCurrentCategory(category)"/>
+</div>
+
+<div ng-if="catCtrl.foods" >
+	<h4>Listing Foods:</h4>
+	<food ng-repeat="food in catCtrl.foods"/>
 </div>
