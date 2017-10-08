@@ -6,6 +6,8 @@
 </div>
 
 <div class="col-md-10" ng-if="catCtrl.foods" >
-  <h4>Listing Foods:</h4>
+  <div class="row">
+    <h4 id="list_food">Listing Foods:</h4>
+  </div>
   <food ng-repeat="food in catCtrl.foods"/>
 </div>
