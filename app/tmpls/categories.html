@@ -1,10 +1,11 @@
-<div>
-	<h3>Listing Categories</h3>
-
-	<category ng-repeat="category in catCtrl.categories" ng-click="catCtrl.setCurrentCategory(category)"/>
+<div class="col-md-2" id="categories">
+  <h4 class="text-primary">Listing Categories</h4>
+  <ul class="nav navbar-nav navbar-left">
+    <category ng-repeat="category in catCtrl.categories" ng-click="catCtrl.setCurrentCategory(category)"/>
+  </ul>
 </div>
 
-<div ng-if="catCtrl.foods" >
-	<h4>Listing Foods:</h4>
-	<food ng-repeat="food in catCtrl.foods"/>
+<div class="col-md-10" ng-if="catCtrl.foods" >
+  <h4>Listing Foods:</h4>
+  <food ng-repeat="food in catCtrl.foods"/>
 </div>
