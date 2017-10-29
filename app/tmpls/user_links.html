@@ -1,12 +1,16 @@
 <div ng-controller="MainController as mainCtrl" class="container" id="main_header_nav">
   <div ng-if="currentUser">
-    <div class="col-md-3"><a href="#!">Home</a></div>
-    <div class="col-md-3"><a href="#!categories">Categories</a></div>
-    <div class="col-md-3"><a href="#!my_profile">My Profile</a></div>
-    <div class="col-md-3"><a href="#" ng-click="mainCtrl.logout()">Logout</a></div>
+    <ul class="nav navbar-nav header-links">
+      <li><a href="#!">Home</a></li>
+      <li><a href="#!categories">Categories</a></li>
+      <li><a href="#!my_profile">My Profile</a></li>
+      <li><a href="#" ng-click="mainCtrl.logout()">Logout</a></li>
+    </ul>  
   </div>
   <div ng-if="!currentUser">
-    <div class="col-md-3"><a href="#!login">Login</a></div>
-    <div class="col-md-3"><a href="#!sign_up">Sign Up</a></div>
+    <ul class="nav navbar-nav header-links">
+      <li><a href="#!login">Login</a></li>
+      <li><a href="#!sign_up">Sign Up</a></li>
+    </ul>
   </div>
 </div>
