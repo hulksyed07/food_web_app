@@ -1,5 +1,10 @@
-angular.module('IndiaEats').service('AuthenticationService', function($http){
+angular.module('IndiaEats').service('AuthenticationService', function($rootScope,$http, $log){
   var service = this;
+
+  service.logout = function(){
+    $rootScope.currentUser = null;
+    sessionStorage.setItem('access_token',null);
+  }
 
   service.registerUser = function(user){
   	// var user_obj = { user } ;
@@ -10,7 +15,9 @@ angular.module('IndiaEats').service('AuthenticationService', function($http){
     // $http.post('http://localhost:3000/v1/sessions/sign_up', {user: user}, {headers: headers} )
     return  $http.post('http://localhost:3000/v1/sessions/sign_up', {user: user} )
               .then(function(result){
-                localStorage.setItem('access_token', result.data.authentication_token);
+                $rootScope.currentUser = angular.copy(result.data);
+                console.log($rootScope.currentUser);
+                sessionStorage.setItem('access_token', result.headers()['HTTP_ACCESS_TOKEN']);
                 return result;
               },
               function(error){
@@ -19,8 +26,25 @@ angular.module('IndiaEats').service('AuthenticationService', function($http){
               })
   }
 
-  // service.login = function(user){
-  //   $http.post('http://localhost:3000/v1/sessions/login',)
-  //   .then
-  // }
+  service.login = function(user){
+    return $http.post('http://localhost:3000/v1/sessions/login',{email: user.email, password: user.password },{xsrfHeaderName: 'Access-Token'})
+      .then(function(result){
+                $rootScope.currentUser = angular.copy(result.data);
+                console.log($rootScope.currentUser);
+                console.log(result);
+                $log.info(result);
+                // console.log(result.headers['Content-Type']);
+
+                // sessionStorage.setItem('access_token', result.headers['Access-Token']);
+                sessionStorage.setItem('access_token', 'hpiuiKwET8z6CvQzP7sb');
+                sessionStorage.setItem('currentUser', JSON.stringify(angular.copy(result.data)));
+
+                
+                return result;
+      },
+      function(error){
+        console.log('error occurred');
+        console.log(error);
+      })
+  }
 })

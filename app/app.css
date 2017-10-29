@@ -2,6 +2,29 @@
 	background-color: yellowgreen;
 }
 
+/*.container {
+	padding: 0 0 0 0;
+	padding-left: 0;
+	margin: 0;
+}*/
+
+body {
+	margin: 0;
+}
+
 #list_food {
 	margin-left: 15px;
+}
+
+#main_header_nav {
+	background-color: darkgreen;
+
+}
+
+#main_header_nav a {
+	color: ghostwhite;
+}
+
+#content_body {
+	background-color: goldenrod;
 }
