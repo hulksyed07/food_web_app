@@ -29,4 +29,7 @@ myModule.config(function($routeProvider){
 		.otherwise({redirectTo: '/'})
 });
 
+myModule.run(function($rootScope){
+	$rootScope.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+});
 
