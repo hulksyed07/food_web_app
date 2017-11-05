@@ -24,6 +24,7 @@ angular.module('IndiaEats').service('AuthenticationService', function($rootScope
               .then(function(result){
                 $rootScope.currentUser = angular.copy(result.data.user);
                 sessionStorage.setItem('access_token', result.data.authentication_token);
+                sessionStorage.setItem('currentUser', JSON.stringify(angular.copy(result.data.user)));
                 return result;
               },
               function(error){
