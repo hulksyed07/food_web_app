@@ -2,8 +2,15 @@ angular.module('IndiaEats').service('AuthenticationService', function($rootScope
   var service = this;
 
   service.logout = function(){
-    $rootScope.currentUser = null;
-    sessionStorage.setItem('access_token',null);
+    var headers = new Headers;
+    headers['Access-Token'] = sessionStorage.getItem('access_token');
+    console.log(headers);
+    return $http.post('http://localhost:3000/v1/sessions/logout', {}, {headers: headers})
+      .then(function(){
+        $rootScope.currentUser = null;
+        sessionStorage.setItem('access_token',null);
+        sessionStorage.setItem('currentUser',null);
+      });
   }
 
   service.registerUser = function(user){
@@ -15,9 +22,8 @@ angular.module('IndiaEats').service('AuthenticationService', function($rootScope
     // $http.post('http://localhost:3000/v1/sessions/sign_up', {user: user}, {headers: headers} )
     return  $http.post('http://localhost:3000/v1/sessions/sign_up', {user: user} )
               .then(function(result){
-                $rootScope.currentUser = angular.copy(result.data);
-                console.log($rootScope.currentUser);
-                sessionStorage.setItem('access_token', result.headers()['HTTP_ACCESS_TOKEN']);
+                $rootScope.currentUser = angular.copy(result.data.user);
+                sessionStorage.setItem('access_token', result.data.authentication_token);
                 return result;
               },
               function(error){
@@ -27,17 +33,13 @@ angular.module('IndiaEats').service('AuthenticationService', function($rootScope
   }
 
   service.login = function(user){
-    return $http.post('http://localhost:3000/v1/sessions/login',{email: user.email, password: user.password },{xsrfHeaderName: 'Access-Token'})
+    return $http.post('http://localhost:3000/v1/sessions/login',{email: user.email, password: user.password })
       .then(function(result){
-                $rootScope.currentUser = angular.copy(result.data);
-                console.log($rootScope.currentUser);
-                console.log(result);
-                $log.info(result);
-                // console.log(result.headers['Content-Type']);
+                $rootScope.currentUser = angular.copy(result.data.user);
 
                 // sessionStorage.setItem('access_token', result.headers['Access-Token']);
-                sessionStorage.setItem('access_token', 'hpiuiKwET8z6CvQzP7sb');
-                sessionStorage.setItem('currentUser', JSON.stringify(angular.copy(result.data)));
+                sessionStorage.setItem('access_token', result.data.authentication_token);
+                sessionStorage.setItem('currentUser', JSON.stringify(angular.copy(result.data.user)));
 
                 
                 return result;
