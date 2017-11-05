@@ -41,13 +41,7 @@ angular.module('IndiaEats').service('AuthenticationService', function($rootScope
                 // sessionStorage.setItem('access_token', result.headers['Access-Token']);
                 sessionStorage.setItem('access_token', result.data.authentication_token);
                 sessionStorage.setItem('currentUser', JSON.stringify(angular.copy(result.data.user)));
-
-                
                 return result;
-      },
-      function(error){
-        console.log('error occurred');
-        console.log(error);
       })
   }
 })
