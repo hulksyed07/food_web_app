@@ -10,7 +10,8 @@
     </div>
 
     <div class="row">
-      <input type="file" file-input ng-model="profCtrl.editedAvatar"/>
+      <!-- <input type="file" file-input ng-model="profCtrl.editedAvatar"/> -->
+      <input type="file" ng-model="profCtrl.editedAvatar" base-sixty-four-input/>
       <button ng-click="profCtrl.updateUserAvatar()">Upload</button>
     </div>
   </div>

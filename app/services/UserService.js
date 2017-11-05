@@ -8,18 +8,20 @@ angular.module('IndiaEats').service('UserService', function($rootScope,$http, $l
   service.updateAvatar = function(avatar){
     console.log('inside updateAvatar sevice');
     console.log(avatar);
-    var formData = new FormData();
-    formData['file'] = avatar;
+    // var formData = new FormData();
+    // formData['file'] = avatar;
     // console.log(formData);
     // file = FileReader.new
     var headers = new Headers;
     headers['Access-Token'] = sessionStorage.getItem('access_token');
     // headers['content-type'] = 'application/octet-stream';
-    headers['Content-type'] = 'undefined';
+    // headers['Content-type'] = 'undefined';
     // return  $http.post('http://localhost:3000/v1/profiles/update_avatar', {avatar: avatar}, {headers: headers})
     return  $http.post('http://localhost:3000/v1/profiles/update_avatar',
-                      { formData },
-                      { transformRequest: angular.identity,
+                      // { formData },
+                      { avatar: avatar },
+                      { 
+                        // transformRequest: angular.identity,
                         headers: headers})
               .then(function(result){
                 $rootScope.currentUser.avatar = angular.copy(result.data.avatar);

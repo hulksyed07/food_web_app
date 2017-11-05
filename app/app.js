@@ -1,4 +1,4 @@
-var myModule = angular.module('IndiaEats', ['ngRoute']);
+var myModule = angular.module('IndiaEats', ['ngRoute', 'naif.base64']);
 
 myModule.config(function($routeProvider){
 	$routeProvider
