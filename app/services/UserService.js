@@ -5,9 +5,23 @@ angular.module('IndiaEats').service('UserService', function($rootScope,$http, $l
     console.log('File changed');
   }
 
+  service.getUserAvatar = function(){
+    var headers = new Headers;
+    headers['Access-Token'] = sessionStorage.getItem('access_token');
+    return  $http.get('http://localhost:3000/v1/profiles/get_user_avatar', { headers: headers})
+              .then(function(result){
+                console.log(result);
+                // var data64 = $base64.encode(unescape(encodeURIComponent(result)));
+                // console.log(data64);
+                return 'data:image/jpeg;charset=binary;base64,' + _arrayBufferToBase64(result);
+              },
+              function(error){
+                console.log('error occurred');
+                console.log(error);
+              })
+  }
+
   service.updateAvatar = function(avatar){
-    console.log('inside updateAvatar sevice');
-    console.log(avatar);
     // var formData = new FormData();
     // formData['file'] = avatar;
     // console.log(formData);
