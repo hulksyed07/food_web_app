@@ -19,6 +19,7 @@
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "angular-route": "^1.6.6",
-    "angular-base64-upload": "^0.1.23"
+    "angular-base64-upload": "^0.1.23",
+    "angular-mocks": "~1.6.6"
   }
 }
