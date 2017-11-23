@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/hulksyed07/food_web_app/issues"
   },
-  "homepage": "https://github.com/hulksyed07/food_web_app#readme"
+  "homepage": "https://github.com/hulksyed07/food_web_app#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0"
+  }
 }
