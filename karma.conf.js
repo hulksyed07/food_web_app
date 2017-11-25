@@ -21,9 +21,14 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-base64-upload/dist/angular-base64-upload.min.js',
       'app/app.js',
+      'app/services/UtilsService.js',
       'app/services/AuthenticationService.js',
+      'app/services/FoodService.js',
+      'app/services/CategoryService.js',
       'app/controllers/AuthenticationController.js',
-      'spec/controllers/AuthenticationController.js'
+      'app/controllers/CategoriesController.js',
+      'spec/controllers/AuthenticationController.js',
+      'spec/controllers/CategoriesController.js'
       // {pattern: 'app/**/*.js', included: false},
       // {pattern: 'spec/**/*.js', included: false}
     ],

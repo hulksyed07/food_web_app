@@ -2,10 +2,20 @@ describe('AuthenticationController', function(){
   // var  AuthenticationService = require('../../app/services/AuthenticationService');
   // var  AuthenticationController = require('../../app/controllers/AuthenticationController');
 
+  var AuthenticationController;
+
   beforeEach(module('IndiaEats'));
 
-  it('should compare 1 with 1', function(){
-    expect(1).toBe(1);
+  beforeEach(inject(function ($rootScope, $controller) {
+    scope = $rootScope.$new();
+    AuthenticationController = $controller('AuthenticationController', {
+      $scope: scope
+    });
+  }));
+
+  it('should initiate loginUser and editedUser with blank hash', function(){
+    expect(AuthenticationController.loginUser).toEqual({});
+    expect(AuthenticationController.editedUser).toEqual({});
   })
 
 })
