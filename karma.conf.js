@@ -17,7 +17,12 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'bower_components/angular/angular.js',
+      'bower_components/angular-route/angular-route.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-base64-upload/dist/angular-base64-upload.min.js',
+      'app/app.js',
+      'app/services/AuthenticationService.js',
+      'app/controllers/AuthenticationController.js',
       'spec/controllers/AuthenticationController.js'
       // {pattern: 'app/**/*.js', included: false},
       // {pattern: 'spec/**/*.js', included: false}
