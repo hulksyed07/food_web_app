@@ -19,6 +19,7 @@ angular.module('IndiaEats').controller('ProfilesController',function(UserService
   profCtrl.updateUserAvatar = function(){
     UserService.updateAvatar(profCtrl.editedAvatar)
       .then(function(result){
+        profCtrl.editedAvatar = null;
         profCtrl.avatar = result;
       },
       function(error){
