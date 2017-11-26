@@ -7,7 +7,6 @@ angular.module('IndiaEats').controller('ProfilesController',function(UserService
   profCtrl.getUserAvatar = function(){
     UserService.getUserAvatar()
       .then(function(result){
-        console.log(result);
         profCtrl.avatar = result;
       },
       function(error){
@@ -20,7 +19,7 @@ angular.module('IndiaEats').controller('ProfilesController',function(UserService
   profCtrl.updateUserAvatar = function(){
     UserService.updateAvatar(profCtrl.editedAvatar)
       .then(function(result){
-
+        profCtrl.avatar = result;
       },
       function(error){
         console.log(error.status);

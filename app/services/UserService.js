@@ -1,4 +1,4 @@
-angular.module('IndiaEats').service('UserService', function($rootScope,$http, $log){
+angular.module('IndiaEats').service('UserService', function($rootScope,$http, $log, $base64){
   var service = this;
 
   service.avatarFileChanged =  function(event){
@@ -6,12 +6,19 @@ angular.module('IndiaEats').service('UserService', function($rootScope,$http, $l
   }
 
   service.getUserAvatar = function(){
-    return  $http.get('http://localhost:3000/v1/profiles/get_user_avatar')
+    return  $http.get('http://localhost:3000/v1/profiles/get_user_avatar', {responseType: "arraybuffer"})
               .then(function(result){
-                console.log(result);
-                // var data64 = $base64.encode(unescape(encodeURIComponent(result)));
+                // console.log(result.data);
+                // var data64 = $base64.encode(unescape(encodeURIComponent(result.data)));
+                // console.log($base64);
+                // var data64 = $base64.encode(result.data);
                 // console.log(data64);
-                return 'data:image/jpeg;charset=binary;base64,' + _arrayBufferToBase64(result);
+                // console.log(_arrayBufferToBase64(result.data));
+                // console.log(btoa(result.data));
+                return 'data:image/jpeg;charset=binary;base64,' + _arrayBufferToBase64(result.data);
+                // return 'data:image/jpeg;charset=binary;base64,' + btoa(data64);
+                // return 'data:image/jpeg;charset=binary;base64,' + data64;
+                // return 'data:image/jpeg;charset=binary;base64,' + result.data;
               },
               function(error){
                 console.log('error occurred');
@@ -20,12 +27,9 @@ angular.module('IndiaEats').service('UserService', function($rootScope,$http, $l
   }
 
   service.updateAvatar = function(avatar){
-    return  $http.post('http://localhost:3000/v1/profiles/update_avatar', { avatar: avatar })
+    return  $http.post('http://localhost:3000/v1/profiles/update_avatar', { avatar: avatar}, {responseType: "arraybuffer" })
               .then(function(result){
-                $rootScope.currentUser.avatar = angular.copy(result.data.avatar);
-                sessionStorage.setItem('access_token', result.data.authentication_token);
-                sessionStorage.setItem('currentUser', JSON.stringify(angular.copy(result.data.user)));
-                return result;
+                return 'data:image/jpeg;charset=binary;base64,' + _arrayBufferToBase64(result.data);
               },
               function(error){
                 console.log('error occurred');

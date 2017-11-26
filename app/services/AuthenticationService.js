@@ -28,8 +28,6 @@ angular.module('IndiaEats').service('AuthenticationService', function($rootScope
     return $http.post('http://localhost:3000/v1/sessions/login',{email: user.email, password: user.password })
       .then(function(result){
                 $rootScope.currentUser = angular.copy(result.data.user);
-
-                // sessionStorage.setItem('access_token', result.headers['Access-Token']);
                 sessionStorage.setItem('access_token', result.data.authentication_token);
                 sessionStorage.setItem('currentUser', JSON.stringify(angular.copy(result.data.user)));
                 return result;
