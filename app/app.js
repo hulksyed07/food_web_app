@@ -29,6 +29,19 @@ myModule.config(function($routeProvider){
 		.otherwise({redirectTo: '/'})
 });
 
+myModule.factory('httpRequestInterceptor', function () {
+  return {
+    request: function (config) {
+      config.headers['Access-Token'] = sessionStorage.getItem('access_token');
+      return config;
+    }
+  };
+});
+
+myModule.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('httpRequestInterceptor');
+});
+
 myModule.run(function($rootScope){
 	$rootScope.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
 });
